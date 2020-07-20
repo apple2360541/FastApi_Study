@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <form action="/upload_files/" method="post" enctype="multipart/form-data">
+         <input type="file" name="file_list" multiple><br><br>
+        <input type="file" name="file_names" multiple><br><br>
+        <input type="submit" value="点击这里显示文件名字和大小"><br><br><br>
+    </form>
+    <form action="/create_file/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" multiple><br><br>
+        <input type="file" name="file_type" multiple><br><br>
+        <input type="text" name="notes" multiple> <br><br>
+        <input type="submit" value="点击这里显示文件属性">
+    </form>
+</div>
+
+</body>
+</html>
