@@ -17,6 +17,11 @@ aiomysql = "*"
 tortoise-orm = "*"
 gino = "*"
 pydantic = {extras = ["full"], version = "*"}
+cryptography = "*"
+starlette = "*"
+pymysql = "*"
+python-jose = "*"
+sqlalchemy = "*"
 
 [requires]
 python_version = "3.8"

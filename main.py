@@ -11,7 +11,8 @@ from routers.status_error import app as status_error
 from routers.form_file import app as form_demo
 from routers.json_decoder import app as json_demo
 from routers.user import router as user
-from routers.auth_security import app as security
+from routers.auth_security import app as auth
+from routers.security import app as security
 from routers.depends import app as depends_demo
 
 app = FastAPI(version="1.0.0")
@@ -26,6 +27,7 @@ app.include_router(status_error, prefix="/status", tags=["状态和错误处理"
 app.include_router(form_demo, prefix="/form", tags=["表单和file"])
 app.include_router(json_demo, prefix="/json", tags=["JsonEncoder"])
 app.include_router(depends_demo, prefix="/depends", tags=["依赖注入"])
+app.include_router(auth, prefix="/auth", tags=["OAuth2认证"])
 app.include_router(security, prefix="/security", tags=["Security认证"])
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -81,5 +83,8 @@ async def validation_exception(request, exc):
 
 if __name__ == '__main__':
     import uvicorn
-
+    from routers.security import get_password_hash,verify_password
+    #$2b$12$vnjVRwkROlNyKy8CX4Ah2OhoasDOtvfiU6OJipOAzYC6xo0AcI/V2
+    print(get_password_hash("123456"))
+    print(verify_password("123456","$2b$12$/QPDn1L5PxeoJJ4WITiof.5Gl7ieyRFRsN.b/DUQFzJi8TeoSQb3e"))
     uvicorn.run(app, host="127.0.0.1", port=8000, debug=True)
